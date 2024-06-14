@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DynamicInterop" Version="0.9.1" />
     <PackageReference Include="Microsoft.OData.Client" Version="7.9.0" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.OData.Client;
-using System.Linq;
+﻿using Microsoft.OData.Client;
 
 namespace NavIntegrationExample
 {
@@ -25,7 +23,10 @@ namespace NavIntegrationExample
     {
         static void Main(string[] args)
         {
-            var serviceRoot = new Uri("http://your-server:7048/DynamicsNAV/OData/Company('YourCompany')");
+            //example: http://your-server:7048/DynamicsNAV/OData/Company('YourCompany')
+            var serverUri = Environment.GetEnvironmentVariable("NAV_SERVER_URI");
+            
+            var serviceRoot = new Uri(serverUri);
             var context = new NavContext(serviceRoot);
 
             var query = context.YourEntities.Where(e => e.ID == 1);
