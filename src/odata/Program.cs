@@ -1,6 +1,6 @@
 ﻿using Microsoft.OData.Client;
 
-namespace NavIntegration
+namespace Nav.Integration.OData
 {
     class NavContext : DataServiceContext
     {
