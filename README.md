@@ -24,6 +24,37 @@ Para integrar o Dynamics NAV 2016 (on-premises) com o sistema de ERP MKData, uti
 4. **Configurar Autenticação e Segurança**:
    - **Autenticação**: Configure a autenticação baseada em usuário no NAV. Isso pode ser feito no console de administração do NAV.
    - **Permissões**: Defina permissões apropriadas para os usuários que acessarão os serviços web, garantindo que apenas usuários autorizados possam realizar operações nos dados financeiros.
+Para baixar o SDK do Microsoft Dynamics NAV, que inclui as ferramentas e bibliotecas necessárias para desenvolvimento e integração, siga estes passos:
+
+### Passos para Baixar o SDK do Microsoft Dynamics NAV
+
+1. **Acesse o Portal de Download da Microsoft**:
+   - Visite o [site oficial de downloads da Microsoft](https://mbs.microsoft.com/customersource/northamerica/NAV/downloads/service-packs/mdf_updates) para Microsoft Dynamics NAV.
+
+2. **Faça Login na Sua Conta**:
+   - Você precisará fazer login com uma conta que tenha permissões para acessar downloads relacionados ao Microsoft Dynamics NAV. Normalmente, isso requer uma conta associada à sua licença do Dynamics NAV.
+
+3. **Encontre e Baixe o SDK**:
+   - No portal de downloads, procure pelo SDK do Microsoft Dynamics NAV correspondente à versão que você está utilizando (por exemplo, NAV 2016).
+   - Certifique-se de selecionar o SDK que inclui as ferramentas e bibliotecas para desenvolvimento .NET, como o `Microsoft.Dynamics.Nav.Interop`.
+
+4. **Instale o SDK**:
+   - Após baixar o SDK, siga as instruções de instalação fornecidas.
+   - Geralmente, o SDK do Dynamics NAV inclui documentação detalhada, exemplos de código e ferramentas de desenvolvimento necessárias para integrar e estender o Dynamics NAV.
+
+5. **Configuração e Uso**:
+   - Uma vez instalado, configure seu ambiente de desenvolvimento para utilizar as bibliotecas e ferramentas fornecidas pelo SDK.
+   - Explore a documentação incluída para aprender a utilizar o `Microsoft.Dynamics.Nav.Interop` e outras partes do SDK para suas necessidades de desenvolvimento.
+
+### Considerações Importantes
+
+- **Licenciamento**: Certifique-se de que você está utilizando o SDK de acordo com os termos de licenciamento da Microsoft e as diretrizes do seu contrato de licença do Dynamics NAV.
+  
+- **Atualizações e Versões**: Verifique se o SDK que você está baixando é compatível com a versão específica do Microsoft Dynamics NAV que você está utilizando (por exemplo, NAV 2016).
+
+- **Suporte e Documentação**: Utilize recursos adicionais, como a documentação oficial do Dynamics NAV, fóruns da comunidade e suporte da Microsoft, para obter ajuda e orientação durante o desenvolvimento.
+
+Ao seguir esses passos, você deve conseguir baixar e instalar o SDK do Microsoft Dynamics NAV, incluindo o `Microsoft.Dynamics.Nav.Interop`, para começar a desenvolver e testar suas integrações e personalizações com o Dynamics NAV.
 
 ### Requisitos de Instalação do Dynamics NAV 2016
 
