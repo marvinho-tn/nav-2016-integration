@@ -1,6 +1,6 @@
 ﻿using Microsoft.OData.Client;
 
-namespace NavIntegrationExample
+namespace NavIntegration
 {
     class NavContext : DataServiceContext
     {
@@ -8,7 +8,7 @@ namespace NavIntegrationExample
 
         public DataServiceQuery<Entity> YourEntities
         {
-            get { return base.CreateQuery<Entity>("YourEntities"); }
+            get { return base.CreateQuery<Entity>("Entities"); }
         }
     }
 
