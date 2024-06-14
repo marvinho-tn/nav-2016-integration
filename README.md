@@ -25,23 +25,6 @@ Para integrar o Dynamics NAV 2016 (on-premises) com o sistema de ERP MKData, uti
    - **Autenticação**: Configure a autenticação baseada em usuário no NAV. Isso pode ser feito no console de administração do NAV.
    - **Permissões**: Defina permissões apropriadas para os usuários que acessarão os serviços web, garantindo que apenas usuários autorizados possam realizar operações nos dados financeiros.
 
-### Integração com .NET
-
-1. **Microsoft.Dynamics.Nav.Interop**:
-   - Use a biblioteca oficial para interagir com o Dynamics NAV. Esta biblioteca permite conexões diretas ao servidor NAV e manipulação de dados através do .NET.
-   - **Exemplo de Código**:
-     ```csharp
-     using Microsoft.Dynamics.Nav.Interop;
-     var navSession = new NavSession("ServerName");
-     var customer = navSession.Customers.GetByID(1);
-     ```
-
-2. **Microsoft Dynamics NAV Web Services**:
-   - Publique serviços web no NAV e consuma-os usando .NET. Utilize as classes de serviço web geradas automaticamente pelo Visual Studio ao adicionar uma referência ao serviço web.
-
-3. **Third-party Libraries**:
-   - Considere bibliotecas de terceiros para funcionalidades específicas, como manipulação de OData.
-
 ### Requisitos de Instalação do Dynamics NAV 2016
 
 **Servidor**:
