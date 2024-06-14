@@ -1,76 +1,45 @@
-Para integrar o Dynamics NAV 2016 (on-premises) com o sistema de ERP MKData, utilizando os protocolos SOAP ou OData, e aproveitar as bibliotecas .NET para facilitar essa integração, siga os passos abaixo:
+# Integração com Microsoft Dynamics NAV 2016 On-Premises
 
-### Passos para Criar a Integração NAV <> MKData
+Este documento fornece uma visão teórica sobre como integrar com o Microsoft Dynamics NAV 2016 On-Premises usando diferentes métodos: SOAP com qualquer linguagem, OData com .NET Core, e SDK com .NET Framework. Não inclui código, apenas explicações conceituais para orientar o desenvolvedor no processo de integração.
 
-1. **Configurar Serviços Web no Dynamics NAV 2016**:
-   - **Publicar Serviços Web**: Use o Dynamics NAV Development Environment (C/SIDE) ou o Visual Studio Code com a extensão AL para criar e publicar serviços web. Para SOAP, crie e publique páginas ou códigos de unidade (codeunits) como serviços web. Para OData, publique páginas como serviços OData.
-     - **SOAP**: Acesse `Web Services` no NAV Development Environment, e crie um novo serviço web, definindo o tipo (Page ou Codeunit) e o ID do objeto.
-     - **OData**: Semelhante ao SOAP, mas ao publicar, escolha a opção para OData.
-   - **Configurar Endpoints**: Após publicar, o NAV fornecerá URLs para acessar esses serviços web. Por exemplo, `http://[Server]:[Port]/[Instance]/WS/[Company]/[Service]` para SOAP.
+## Integração via SOAP com Qualquer Linguagem
 
-2. **Implementar Lógica de Importação/Exportação**:
-   - **No NAV**: Desenvolva a lógica necessária para importar/exportar dados. Isso pode incluir operações CRUD (Create, Read, Update, Delete) em registros financeiros. Utilize o AL language para scripts personalizados.
-   - **No MKData**: Desenvolva a lógica para consumir os serviços web do NAV. Isso envolve fazer chamadas SOAP ou OData para os endpoints NAV, enviando e recebendo dados conforme necessário.
+SOAP (Simple Object Access Protocol) é um protocolo de comunicação baseado em XML que permite a troca de informações estruturadas entre sistemas. Integrar com o Microsoft Dynamics NAV 2016 via SOAP envolve os seguintes passos teóricos:
 
-3. **Consumir Serviços Web no MKData**:
-   - **SOAP**: Utilize ferramentas .NET como `HttpClient` ou bibliotecas específicas para SOAP (por exemplo, `System.ServiceModel`) para fazer chamadas SOAP.
-   - **OData**: Utilize `HttpClient` ou bibliotecas OData como `Microsoft.Data.OData` para consumir serviços OData.
-   - **Exemplo de Código .NET (SOAP)**:
-     ```csharp
-     var client = new ServiceReference1.FinancialServiceClient();
-     var response = client.GetFinancialData();
-     ```
+1. **Definição dos Serviços Web SOAP**: No Microsoft Dynamics NAV 2016, os serviços web SOAP são configurados para expor funcionalidades do sistema, como operações de leitura, escrita e atualização de dados.
 
-4. **Configurar Autenticação e Segurança**:
-   - **Autenticação**: Configure a autenticação baseada em usuário no NAV. Isso pode ser feito no console de administração do NAV.
-   - **Permissões**: Defina permissões apropriadas para os usuários que acessarão os serviços web, garantindo que apenas usuários autorizados possam realizar operações nos dados financeiros.
-Para baixar o SDK do Microsoft Dynamics NAV, que inclui as ferramentas e bibliotecas necessárias para desenvolvimento e integração, siga estes passos:
+2. **Estrutura do SOAP**: Para interagir com os serviços web SOAP do Dynamics NAV 2016, é necessário entender a estrutura dos pedidos SOAP, que inclui o envelope SOAP, cabeçalhos e corpos de mensagem XML.
 
-### Passos para Baixar o SDK do Microsoft Dynamics NAV
+3. **Autenticação e Segurança**: SOAP suporta diferentes mecanismos de autenticação, como Basic Authentication ou autenticação baseada em token, dependendo da configuração do servidor NAV. É crucial configurar a segurança para proteger a integridade e a confidencialidade dos dados.
 
-1. **Acesse o Portal de Download da Microsoft**:
-   - Visite o [site oficial de downloads da Microsoft](https://mbs.microsoft.com/customersource/northamerica/NAV/downloads/service-packs/mdf_updates) para Microsoft Dynamics NAV.
+4. **Processo de Integração**: 
+   - **Solicitação**: Envie requisições SOAP para os endpoints de serviço web do Dynamics NAV 2016, especificando os métodos e parâmetros necessários.
+   - **Resposta**: Receba respostas do NAV 2016 em formato XML, interprete e processe os dados conforme necessário.
 
-2. **Faça Login na Sua Conta**:
-   - Você precisará fazer login com uma conta que tenha permissões para acessar downloads relacionados ao Microsoft Dynamics NAV. Normalmente, isso requer uma conta associada à sua licença do Dynamics NAV.
+## Integração via OData com .NET Core
 
-3. **Encontre e Baixe o SDK**:
-   - No portal de downloads, procure pelo SDK do Microsoft Dynamics NAV correspondente à versão que você está utilizando (por exemplo, NAV 2016).
-   - Certifique-se de selecionar o SDK que inclui as ferramentas e bibliotecas para desenvolvimento .NET, como o `Microsoft.Dynamics.Nav.Interop`.
+OData (Open Data Protocol) é um protocolo baseado em padrões abertos para a criação e consumo de APIs RESTful que acessam dados utilizando o padrão HTTP, URI e JSON. Integrar com o Microsoft Dynamics NAV 2016 via OData usando .NET Core inclui os seguintes aspectos teóricos:
 
-4. **Instale o SDK**:
-   - Após baixar o SDK, siga as instruções de instalação fornecidas.
-   - Geralmente, o SDK do Dynamics NAV inclui documentação detalhada, exemplos de código e ferramentas de desenvolvimento necessárias para integrar e estender o Dynamics NAV.
+1. **Configuração de Serviços OData**: No Microsoft Dynamics NAV 2016, os serviços OData são configurados para expor entidades e operações do sistema, permitindo consultas e manipulação de dados através de endpoints RESTful.
 
-5. **Configuração e Uso**:
-   - Uma vez instalado, configure seu ambiente de desenvolvimento para utilizar as bibliotecas e ferramentas fornecidas pelo SDK.
-   - Explore a documentação incluída para aprender a utilizar o `Microsoft.Dynamics.Nav.Interop` e outras partes do SDK para suas necessidades de desenvolvimento.
+2. **Utilização do Cliente OData**: No ambiente .NET Core, você pode usar bibliotecas ou pacotes específicos para gerar clientes OData que facilitam a interação com os serviços expostos pelo Dynamics NAV 2016.
 
-### Considerações Importantes
+3. **Padrões de URL e Recursos**: OData utiliza URLs padrão para identificar e acessar entidades e operações no Dynamics NAV 2016. O desenvolvedor deve entender a estrutura dos URLs OData e como utilizá-los para consultar, filtrar e modificar dados.
 
-- **Licenciamento**: Certifique-se de que você está utilizando o SDK de acordo com os termos de licenciamento da Microsoft e as diretrizes do seu contrato de licença do Dynamics NAV.
-  
-- **Atualizações e Versões**: Verifique se o SDK que você está baixando é compatível com a versão específica do Microsoft Dynamics NAV que você está utilizando (por exemplo, NAV 2016).
+4. **Tratamento de Respostas**: As respostas OData são retornadas em formato JSON ou XML, dependendo da configuração do serviço. É essencial entender como interpretar e processar essas respostas no contexto do seu aplicativo .NET Core.
 
-- **Suporte e Documentação**: Utilize recursos adicionais, como a documentação oficial do Dynamics NAV, fóruns da comunidade e suporte da Microsoft, para obter ajuda e orientação durante o desenvolvimento.
+## Integração via SDK com .NET Framework
 
-Ao seguir esses passos, você deve conseguir baixar e instalar o SDK do Microsoft Dynamics NAV, incluindo o `Microsoft.Dynamics.Nav.Interop`, para começar a desenvolver e testar suas integrações e personalizações com o Dynamics NAV.
+Utilizar o SDK do Microsoft Dynamics NAV 2016 com .NET Framework oferece uma abordagem programática para integrar e personalizar o sistema. Os aspectos teóricos da integração incluem:
 
-### Requisitos de Instalação do Dynamics NAV 2016
+1. **Bibliotecas e Ferramentas SDK**: O SDK do Dynamics NAV 2016 inclui bibliotecas .NET que facilitam a comunicação e interação com o sistema NAV, como `Microsoft.Dynamics.Nav.Client`.
 
-**Servidor**:
-- **Sistema Operacional**: Windows Server 2012 R2 ou posterior.
-- **Processador**: Dual-core 64 bits ou superior.
-- **Memória RAM**: 4 GB (8 GB recomendados).
-- **Espaço em Disco**: 200 GB ou mais.
-- **Banco de Dados**: Microsoft SQL Server 2012 ou posterior.
-- **Framework .NET**: .NET Framework 4.6.1 ou posterior.
+2. **Configuração do Ambiente de Desenvolvimento**: Para desenvolver com o SDK do NAV 2016, você deve configurar seu ambiente com as ferramentas adequadas, como Visual Studio e extensões específicas para NAV.
 
-**Cliente**:
-- **Sistema Operacional**: Windows 7 SP1 ou posterior.
-- **Processador**: 1 GHz ou superior.
-- **Memória RAM**: 1 GB (32 bits), 2 GB (64 bits).
-- **Espaço em Disco**: Conforme os requisitos do sistema operacional e software cliente.
+3. **Uso de APIs e Serviços Expostos**: O SDK permite acesso programático aos serviços e funcionalidades do Dynamics NAV 2016, permitindo a leitura, gravação e atualização de dados de maneira controlada e segura.
 
-### Documentação e Recursos
-Consulte a documentação oficial do [Dynamics NAV 2016](https://docs.microsoft.com/en-us/dynamics-nav/) para obter detalhes adicionais sobre a criação de serviços web e integrações, além de exemplos e tutoriais sobre o uso das bibliotecas .NET Interop.
+4. **Desenvolvimento de Extensões**: Além da integração básica, o SDK suporta o desenvolvimento de extensões personalizadas que estendem as funcionalidades nativas do Dynamics NAV 2016, atendendo a requisitos específicos do negócio.
+
+## Conclusão
+
+Este README oferece uma visão teórica sobre como integrar com o Microsoft Dynamics NAV 2016 On-Premises usando diferentes métodos: SOAP com qualquer linguagem, OData com .NET Core e SDK com .NET Framework. Cada método oferece vantagens específicas e é escolhido com base nos requisitos do projeto, capacidades de desenvolvimento e ambiente técnico disponível. Para implementações práticas, consulte a documentação oficial do Dynamics NAV 2016, tutoriais e exemplos de código relevantes para cada método de integração.
